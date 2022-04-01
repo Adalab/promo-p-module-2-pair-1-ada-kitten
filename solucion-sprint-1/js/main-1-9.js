@@ -14,8 +14,3 @@
 // Muestra un mensaje al usuario: "Mola! Un nuevo gatito en Adalab!".
 // labelMesageError.innerHTML = 'Mola! Un nuevo gatito en Adalab!';
 // Vuelve a pintar el listado de gatitos llamando a la función renderKittenList(kittenDataList)
-
-const cats = [
-  katName: ¡
-
-]
