@@ -102,7 +102,13 @@ function addNewKitten(event) {
 
   kittenDataList.push(gatoNuevo);
   renderKittenList(kittenDataList);
+  inputDesc.value = '';
+  inputPhoto.value = '';
+  inputName.value = '';
+
+  labelMesageError.innerHTML = 'Mola! Un nuevo gatito en Adalab!';
 }
+
 //Cancelar la búsqueda de un gatito
 function cancelNewKitten(event) {
   event.preventDefault();
