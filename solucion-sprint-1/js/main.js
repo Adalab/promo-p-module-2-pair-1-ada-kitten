@@ -93,6 +93,8 @@ function addNewKitten(event) {
     }
   }
 
+
+
   const gatoNuevo = {
     image: valuePhoto,
     name: valueName,
@@ -102,7 +104,14 @@ function addNewKitten(event) {
 
   kittenDataList.push(gatoNuevo);
   renderKittenList(kittenDataList);
+  inputDesc.value='';
+  inputPhoto.value='';
+  inputName.value='';
+
+  labelMesageError.innerHTML = 'Mola! Un nuevo gatito en Adalab!';
 }
+
+
 //Cancelar la búsqueda de un gatito
 function cancelNewKitten(event) {
   event.preventDefault();
@@ -110,6 +119,7 @@ function cancelNewKitten(event) {
   inputDesc.value = '';
   inputPhoto.value = '';
   inputName.value = '';
+
 }
 
 //Filtrar por descripción
@@ -149,3 +159,5 @@ buttonCancelForm.addEventListener('click', cancelNewKitten);
 // Muestra un mensaje al usuario: "Mola! Un nuevo gatito en Adalab!".
 // labelMesageError.innerHTML = 'Mola! Un nuevo gatito en Adalab!';
 // Vuelve a pintar el listado de gatitos llamando a la función renderKittenList(kittenDataList)
+
+
