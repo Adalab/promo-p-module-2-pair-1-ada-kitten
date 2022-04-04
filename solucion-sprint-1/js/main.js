@@ -1,39 +1,39 @@
-'use strict';
+"use strict";
 
 /* Elementos que usamos en el HTML */
-const newFormElement = document.querySelector('.js-new-form');
-const listElement = document.querySelector('.js-list');
-const searchButton = document.querySelector('.js-button-search');
-const buttonAdd = document.querySelector('.js-btn-add');
-const buttonCancelForm = document.querySelector('.js-btn-cancel');
-const inputDesc = document.querySelector('.js-input-desc');
-const inputPhoto = document.querySelector('.js-input-photo');
-const inputName = document.querySelector('.js-input-name');
-const linkNewFormElememt = document.querySelector('.js-button-new-form');
-const labelMesageError = document.querySelector('.js-label-error');
-const input_search_desc = document.querySelector('.js_in_search_desc');
+const newFormElement = document.querySelector(".js-new-form");
+const listElement = document.querySelector(".js-list");
+const searchButton = document.querySelector(".js-button-search");
+const buttonAdd = document.querySelector(".js-btn-add");
+const buttonCancelForm = document.querySelector(".js-btn-cancel");
+const inputDesc = document.querySelector(".js-input-desc");
+const inputPhoto = document.querySelector(".js-input-photo");
+const inputName = document.querySelector(".js-input-name");
+const linkNewFormElememt = document.querySelector(".js-button-new-form");
+const labelMesageError = document.querySelector(".js-label-error");
+const input_search_desc = document.querySelector(".js_in_search_desc");
 
 //Objetos con cada gatito
 const kittenDataList = [
   {
-    image: 'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg',
-    name: 'Anastacio',
-    desc: 'Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
-    race: 'British Shorthair',
+    image: "https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg",
+    name: "Anastacio",
+    desc: "Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle simpatico!",
+    race: "British Shorthair",
   },
   {
     image:
-      'https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg',
-    name: 'Fiona',
-    desc: 'Juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
-    race: 'British Shorthair',
+      "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg",
+    name: "Fiona",
+    desc: "Juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!",
+    race: "British Shorthair",
   },
   {
     image:
-      'https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg',
-    name: 'Cielo',
-    desc: 'Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
-    race: 'British Shorthair',
+      "https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg",
+    name: "Cielo",
+    desc: "Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle es muy guapo!",
+    race: "British Shorthair",
   },
 ];
 
@@ -57,7 +57,7 @@ function renderKitten(kittenData) {
 }
 
 function renderKittenList(kittenDataList) {
-  listElement.innerHTML = '';
+  listElement.innerHTML = "";
   for (const kittenItem of kittenDataList) {
     listElement.innerHTML += renderKitten(kittenItem);
   }
@@ -65,15 +65,15 @@ function renderKittenList(kittenDataList) {
 
 //Mostrar/ocultar el formulario
 function showNewCatForm() {
-  newFormElement.classList.remove('collapsed');
+  newFormElement.classList.remove("collapsed");
 }
 function hideNewCatForm() {
-  newFormElement.classList.add('collapsed');
+  newFormElement.classList.add("collapsed");
 }
 
 function handleClickNewCatForm(event) {
   event.preventDefault();
-  if (newFormElement.classList.contains('collapsed')) {
+  if (newFormElement.classList.contains("collapsed")) {
     showNewCatForm();
   } else {
     hideNewCatForm();
@@ -85,73 +85,64 @@ function addNewKitten(event) {
   const valueDesc = inputDesc.value;
   const valuePhoto = inputPhoto.value;
   const valueName = inputName.value;
-  if (valueDesc === '' && valuePhoto === '' && valueName === '') {
-    labelMesageError.innerHTML = 'Debe rellenar todos los valores';
+  if (valueDesc === "" && valuePhoto === "" && valueName === "") {
+    labelMesageError.innerHTML = "Debe rellenar todos los valores";
   } else {
-    if (valueDesc !== '' && valuePhoto !== '' && valueName !== '') {
-      labelMesageError.innerHTML = '';
+    if (valueDesc !== "" && valuePhoto !== "" && valueName !== "") {
+      labelMesageError.innerHTML = "";
     }
   }
 
   const gatoNuevo = {
     image: valuePhoto,
     name: valueName,
-    race: '',
+    race: "",
     desc: valueDesc,
   };
 
   kittenDataList.push(gatoNuevo);
   renderKittenList(kittenDataList);
-  inputDesc.value = ''; //LIMPIAR VALORES DEL INPUT
-  inputPhoto.value = '';
-  inputName.value = '';
+  inputDesc.value = ""; //LIMPIAR VALORES DEL INPUT
+  inputPhoto.value = "";
+  inputName.value = "";
 
-  labelMesageError.innerHTML = 'Mola! Un nuevo gatito en Adalab!'; //MENSAJE DE EXITO
+  labelMesageError.innerHTML = "Mola! Un nuevo gatito en Adalab!"; //MENSAJE DE EXITO
 }
 
 //Cancelar la búsqueda de un gatito
 function cancelNewKitten(event) {
   event.preventDefault();
-  newFormElement.classList.add('collapsed');
-  inputDesc.value = '';
-  inputPhoto.value = '';
-  inputName.value = '';
+  newFormElement.classList.add("collapsed");
+  inputDesc.value = "";
+  inputPhoto.value = "";
+  inputName.value = "";
 }
 
-//Filtrar por descripción
-function filterKitten(event) {
-  event.preventDefault();
-  const descrSearchText = input_search_desc.value;
-  listElement.innerHTML = '';
-  for (const kittenItem of kittenDataList) {
-    if (kittenItem.desc.includes(descrSearchText)) {
-      listElement.innerHTML += renderKitten(kittenItem);
-    }
-  }
-}
+// //Filtrar por descripción
+//
+//   event.preventDefault();
+//   const descrSearchText = input_search_desc.value;
+//   listElement.innerHTML = '';
+//   for (const kittenItem of kittenDataList) {
+//     if (kittenItem.desc.includes(descrSearchText)) {
+//       listElement.innerHTML += renderKitten(kittenItem);
+//     }
+//   }
+// }
 
 //Mostrar el litado de gatitos en ell HTML
 renderKittenList(kittenDataList);
 
 //Eventos
-linkNewFormElememt.addEventListener('click', handleClickNewCatForm);
-searchButton.addEventListener('click', filterKitten);
-buttonAdd.addEventListener('click', addNewKitten);
-buttonCancelForm.addEventListener('click', cancelNewKitten);
+linkNewFormElememt.addEventListener("click", handleClickNewCatForm);
+searchButton.addEventListener("click", filterKitten);
+buttonAdd.addEventListener("click", addNewKitten);
+buttonCancelForm.addEventListener("click", cancelNewKitten);
 
-// 2. Agregar un nuevo gatito al listado
-// Hasta el momento en la aplicación trabajamos con tres gatitos, en este ejercicio vamos a agregar desde el formulario nuevos gatitos al listado. Para ello:
+function filterKitten(event) {
+  const kittenListFiltered = kittenDataList
+    .filter((cat) => cat.desc.includes(input_search_desc))
+    .filter((cat) => cat.race.includes(input_search_race));
 
-// Escucha el evento asociado al evento click del botón Guardar del formulario.
-
-// Modifica la función manejadora del evento addNewKitten(ev).
-// Dentro de esta función crea un nuevo objeto newKittenDataObject. ¿De dónde sale toda la información que enviamos al servidor? La información la obtenemos desde el formulario de la aplicación, con los valores de cada uno de los inputs. Recuerda que cada gatito tiene una imagen, name, desc y race
-// const newKittenDataObject = {
-//   //completa el código
-// };
-// Agrega al listado de enlaces con la siguiente línea de código:
-// kittenDataList.push(newKittenDataObject);
-// Limpia los valores de los inputs
-// Muestra un mensaje al usuario: "Mola! Un nuevo gatito en Adalab!".
-// labelMesageError.innerHTML = 'Mola! Un nuevo gatito en Adalab!';
-// Vuelve a pintar el listado de gatitos llamando a la función renderKittenList(kittenDataList)
+  renderKittenList(kittenListFiltered);
+}
