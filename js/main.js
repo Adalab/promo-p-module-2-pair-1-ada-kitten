@@ -15,28 +15,7 @@ const input_search_desc = document.querySelector(".js-buscar-desc");
 const input_search_race = document.querySelector(".js-buscar-race");
 
 //Objetos con cada gatito
-const kittenDataList = [
-  {
-    image: "https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg",
-    name: "Anastacio",
-    desc: "Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle simpatico!",
-    race: "British Shorthair",
-  },
-  {
-    image:
-      "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg",
-    name: "Fiona",
-    desc: "Juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!",
-    race: "British Shorthair",
-  },
-  {
-    image:
-      "https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg",
-    name: "Cielo",
-    desc: "Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle es muy guapo!",
-    race: "British Shorthair",
-  },
-];
+let kittenDataList = [];
 
 //Funciones
 function renderKitten(kittenData) {
@@ -44,7 +23,7 @@ function renderKitten(kittenData) {
     <article>
       <img
         class="card_img"
-        src=${kittenData.image}
+        src=${kittenData.url}
         alt="gatito"
       />
       <h3 class="card_title">${kittenData.name}</h3>
@@ -148,3 +127,19 @@ function filterKitten(event) {
 
   renderKittenList(kittenListFiltered);
 }
+
+
+// enviamos peticiones al servidor
+
+const GITHUB_USER = "Carmenyo";
+const SERVER_URL = `https://adalab-api.herokuapp.com/api/kittens/${GITHUB_USER}`;
+
+fetch(SERVER_URL, {
+  method: "GET",
+  headers: { "Content-Type": "application/json"},
+}).then(function (response) {
+    return response.json();
+  })
+.then(function (data) { console.log(data);  kittenDataList = data.results;
+  renderKittenList(kittenDataList);
+});
